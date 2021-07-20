@@ -1,0 +1,20 @@
+version: '3'
+services: 
+  jupyter:
+    image: nlp-intelnotebook:v1.1
+    # build: 
+    #     context: ./
+    #     dockerfile: Dockerfile
+    container_name: nlp_notebook
+    environment: 
+      TZ: "Asia/Tokyo"
+      JUPYTER_ENABLE_LAB: "yes"
+      USE_DAAL4PY_SKLEARN: "YES"
+      KMP_AFFINITY: "granularity=fine,compact,1,0"
+      KMP_BLOCKTIME: "1"
+      KMP_STTINGS: "1"
+      OMP_NUM_THREADS: "4"
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work/:/home/jovyan/work/:z
